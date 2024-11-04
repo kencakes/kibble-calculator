@@ -1,23 +1,23 @@
 import React from "react";
-import {TextInput, StyleSheet} from "react-native";
+import { TouchableOpacity, Text } from "react-native";
+import COLORS from "../styles/Colors";
 
-
-export const Field = ({ value, onChangeText, placeholder}) => {
-    return (
-        <TextInput
-            style={styles.input}
-            placeholder={placeholder}
-            value={value}
-            onChangeText={onChangeText}
-        />
-    )
-}
-
-const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-    },
-});
+export const Button = ({ title, onPress = () => {} }) => {
+  return (
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      style={{
+        height: 55,
+        width: "100%",
+        backgroundColor: COLORS.blue,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ color: COLORS.white, fontWeight: "bold", fontSize: 18 }}>
+        {title}
+      </Text>
+    </TouchableOpacity>
+  );
+};
