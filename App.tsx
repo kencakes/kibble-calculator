@@ -93,14 +93,12 @@ export default function App() {
     const metabolicWeight = Math.pow(inputs.weight, 0.75);
 
     // Calculates energy / day
-    let energyValue;
-    if (inputs.age <= 2) {
-      energyValue = metabolicWeight * 550;
-    } else if (inputs.age >= 3 && inputs.age < 7) {
-      energyValue = metabolicWeight * 460;
-    } else {
-      energyValue = metabolicWeight * 398; // Correcting the last else if condition
-    }
+    const energyValue =
+      inputs.age <= 2
+        ? metabolicWeight * 550
+        : inputs.age < 7
+          ? metabolicWeight * 460
+          : metabolicWeight * 398;
 
     // Calculates carbohydrates
     const carbohydratesValue =
@@ -121,13 +119,6 @@ export default function App() {
     );
 
     setCalculation(calculationValue);
-
-    // Logging values for debugging
-    console.log("Metabolic Weight:", metabolicWeight);
-    console.log("Energy Value:", energyValue);
-    console.log("Carbohydrates Value:", carbohydratesValue);
-    console.log("Energy Density Value:", energyDensityValue);
-    console.log("Final Calculation:", calculationValue);
   };
 
   return (
